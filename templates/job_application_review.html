@@ -1,0 +1,80 @@
+
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Job application form</title>
+    <script type="text/javascript">
+      function myfunction(){
+        var x = document.getElementById('approve').style.display = "none";
+      }
+    </script>
+
+  </head>
+  <body>
+
+    {% block content %}
+    <head>
+      <link rel="stylesheet" href="{% static 'css/job_appstyle.css' %}">
+    </head>
+
+    <div id="login-box">
+      <div class="left">
+        <h1>Review Application Form</h1>
+
+        <form method = "post" enctype="multipart/form-data">
+          {% csrf_token %}
+             <br><br>
+            <label name="name">Name:</label>
+              {{stud_data.name}}
+              <br><br>
+            <label name="course">Course:</label>
+              {{stud_data.course}}
+              <br><br>
+            <label name="sem">Semester:</label>
+              {{stud_data.sem}}
+              <br><br>
+            <label name="department">Department:</label>
+              {{stud_data.department}}
+              <br><br>
+            <label name="email">E-mail:</label>
+              {{stud_data.email}}
+              <br><br> type="text/javascript"
+            <label name="mobno">Phone Number:</label>
+              {{stud_data.mobno}}
+              <br><br>
+            <label name="resume">Resume:</label>
+              <a href="{% static 'myfile/' %}{{stud_info.resume}}">{{stud_info.resume}}</a>
+            <input type="submit" name="approve" value="Approve" id = "approve">
+              </div>
+
+      <div class="right">
+
+
+        <div class="dropdown">
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <label name="company">Company Name:</label>
+              {{stud_info.company}}
+              <br><br>
+          </div>
+        </div>
+
+            <label name="position">Position:</label>
+            {{stud_info.position}}
+            <br><br>
+
+            <label name="reason_to_join">Reason to Join:</label>
+            {{stud_info.reason_to_join}}
+            <br><br><br><br><br><br><br>
+            <input type="submit" name="reject" value="Reject">
+      </form>
+
+    {% endblock content %}
+
+
+  </body>
+</html>

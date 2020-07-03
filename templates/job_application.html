@@ -1,0 +1,69 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Job application form</title>
+    <link rel="stylesheet" href= {% static 'css/job_appstyle.css' %}>
+  </head>
+  <body>
+
+    <div id="login-box">
+      <div class="left">
+        <h1>Fill Application Form</h1>
+
+        <form method = "post" enctype="multipart/form-data" class="form-horizontal">
+          {% csrf_token %}
+        <label for="username">Username</label>
+        {{stud_info.name}}
+        <br><br>
+        <label for="course">Course</label>
+        {{stud_info.course}}
+        <br><br>
+        <label for="semester">Semester</label>
+        {{stud_info.sem}}
+        <br><br>
+        <label for="department">Department</label>
+        {{stud_info.department}}
+        <br><br>
+        <label for="email">Email</label>
+        {{stud_info.email}}
+        <br><br>
+        <label for="phnumber">Phone Number</label>
+        {{stud_info.mobno}}
+        <br><br>
+        <label for="resume">Resume</label>
+        <br>
+        <input type="file" name="resume" placeholder="upload resume" />
+
+        <input type="submit" name="signup_submit" value="SUBMIT" />
+      </div>
+
+      <div class="right">
+
+        <div class="dropdown">
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <label for="company">Company Name:</label>
+              <select name="company">
+              <option class="dropdown-item" >select options</option>
+              <option class="dropdown-item" value="google">Google</option>
+              <option class="dropdown-item" value="amazon">Amazon</option>
+              <option class="dropdown-item" value="apple">Apple</option>
+              <option class="dropdown-item" value="spacex">SpaceX</option>
+              <option class="dropdown-item" value="alibaba">Alibaba</option>
+              </select>
+          </div>
+        </div>
+
+          <input type="text" name="position" placeholder="enter the position" />
+
+        <textarea name="reason_to_join" rows="9" cols="30">why do you want to join the company</textarea>
+
+      </form>
+
+
+  </body>
+</html>

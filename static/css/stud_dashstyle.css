@@ -1,0 +1,24 @@
+body{
+  background-color: white;
+  color:darkgreen;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 25px;
+}
+
+a{
+	color: #0984e3;
+}
+
+.col-lg-3{
+	margin-left: auto;
+	background-color: #b2bec3;
+	padding: 30px;
+}
+
+.first,.second{
+  margin-left: auto;
+}

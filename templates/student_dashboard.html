@@ -1,0 +1,67 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/stud_dashstyle.css' %}">
+    <style>
+      .navbar-nav {
+        flex-direction: row;
+      }
+
+      .nav-link {
+        padding-right: .5rem !important;
+        padding-left: .5rem !important;
+      }
+
+      .ml-auto .dropdown-menu {
+        left: auto !important;
+        right: 0px;
+      }
+    </style>
+  </head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+      <a class="navbar-brand" href="{% url 'jobapplication' stud_info.pk %}">
+        Enter job application
+      </a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link">Welcome {{stud_info.name}}</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'login' %}" class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+  <table class="table table-bordered table-dark">
+      <thead>
+        <tr>
+          <th scope="col">company</th>
+          <th scope="col">position</th>
+          <th scope="col">appliedon</th>
+          <th scope="col">Resume</th>
+          <th scope="col">status</th>
+        </tr>
+      </thead>
+      {% for app in stud_data %}
+      <tbody>
+        <tr>
+          <td>{{app.company}}</td>
+          <td>{{app.position}}</td>
+          <td>{{app.applied_date}}</td>
+          <td> <a href="{% static 'myfile/' %}{{app.resume}}">{{app.resume}}</a> </td>
+          <td>
+              <button type="button" name="Submitted" class ="btn btn-primary">Submitted</button>
+          </td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </body>
